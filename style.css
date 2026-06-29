@@ -251,7 +251,7 @@ body {
     margin-top: 15px;
     padding: 0 10px;
     text-transform: uppercase;
-    animation: master-glitch 10.5s infinite;
+    animation: master-glitch 4.5s infinite;
 }
 
 .transliteration::before,
@@ -275,18 +275,7 @@ body {
     left: -2px;
     text-shadow: 2px 0 #3a0303, -2px 2px 4px rgba(58, 3, 3, 0.8);
     clip-path: inset(70% 0 15% 0);
-    animation: glitch-bottom 4.8s infinite linear alternate-reverse;
-}
-
-.tranliteration2 {
-    font-family: var(--font-title);
-    font-size: 1rem;
-    letter-spacing: 5px;
-    color: #a81515; /* Ubah warna merah menjadi sedikit lebih terang/kontras */
-    text-shadow: 0 0 12px rgba(255, 0, 0, 0.8); /* Memperkuat bayangan agar teks menonjol */
-    text-transform: uppercase;
-    opacity: 1; /* Ubah dari nilai rendah (misal 0.4) menjadi 1 agar solid */
-    animation: breathingBlood 1s ease-in-out infinite alternate;
+    animation: glitch-bottom 2.8s infinite linear alternate-reverse;
 }
 
 .matrix-glyph {
