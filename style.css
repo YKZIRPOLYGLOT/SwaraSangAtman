@@ -218,6 +218,10 @@ body {
     /* Mencegah teks pindah baris secara paksa */
     white-space: nowrap; 
     
+    animation: none;
+}
+
+.main-title.glitch-active {
     animation: master-glitch 4s infinite;
 }
 
@@ -236,12 +240,21 @@ body {
     left: 2px;
     text-shadow: -2px 0 #fffde6, 0 0 10px var(--gold-glow);
     clip-path: inset(45% 0 45% 0);
+    animation: none;
+}
+
+.main-title.glitch-active::before {
     animation: glitch-top 2.5s infinite linear alternate-reverse;
 }
+
 .main-title::after {
     left: -2px;
     text-shadow: -2px 0 #8c6212, 2px 2px 5px rgba(212, 175, 55, 0.4);
     clip-path: inset(80% 0 5% 0);
+    animation: none;
+}
+
+.main-title.glitch-active::after {
     animation: glitch-bottom 3s infinite linear alternate-reverse;
 }
 
@@ -260,6 +273,10 @@ body {
     margin-top: 15px;
     padding: 0 10px;
     text-transform: uppercase;
+    animation: none;
+}
+
+.transliteration.glitch-active {
     animation: master-glitch 4.5s infinite;
 }
 
@@ -278,12 +295,21 @@ body {
     left: 2px;
     text-shadow: -2px 0 #ff3333, 0 0 8px rgba(255, 51, 51, 0.5);
     clip-path: inset(30% 0 60% 0);
+    animation: none;
+}
+
+.transliteration.glitch-active::before {
     animation: glitch-top 6s infinite linear alternate-reverse;
 }
+
 .transliteration::after {
     left: -2px;
     text-shadow: 2px 0 #3a0303, -2px 2px 4px rgba(58, 3, 3, 0.8);
     clip-path: inset(70% 0 15% 0);
+    animation: none;
+}
+
+.transliteration.glitch-active::after {
     animation: glitch-bottom 5.5s infinite linear alternate-reverse;
 }
 
@@ -401,6 +427,10 @@ body {
     font-size: 1.8rem;
     color: var(--gold);
     opacity: 0.7;
+    animation: none;
+}
+
+.sacred-monogram.glitch-active {
     animation: breathingGlow 4s ease-in-out infinite alternate;
 }
 
@@ -412,6 +442,10 @@ body {
     text-shadow: 0 0 12px rgba(255, 0, 0, 0.8); /* Memperkuat bayangan agar teks menonjol */
     text-transform: uppercase;
     opacity: 1; /* Ubah dari nilai rendah (misal 0.4) menjadi 1 agar solid */
+    animation: none;
+}
+
+.tranliteration2.glitch-active {
     animation: breathingBlood 3s ease-in-out infinite alternate;
 }
 

@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initSacredParticles();
     initInteractions();
     initScrollObserver();
+    initGlitchVisibilityObserver();
     initMatrixGlitch();
 });
 
@@ -168,6 +169,38 @@ function initScrollObserver() {
     }, { threshold: 0.2 });
 
     elementsToReveal.forEach((el) => observer.observe(el));
+}
+
+/* ==========================================
+   3.5. GLITCH VISIBILITY OBSERVER (Control Glitch Animation On/Off)
+   ========================================== */
+function initGlitchVisibilityObserver() {
+    const titleEl = document.querySelector(".main-title");
+    const transEl = document.querySelector(".transliteration");
+    const footerEl = document.querySelector(".manuscript-footer");
+    const monoEl = document.querySelector(".sacred-monogram");
+    const transFooterEl = document.querySelector(".tranliteration2");
+
+    const glitchObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                // Element is visible - add glitch-active class
+                entry.target.classList.add("glitch-active");
+            } else {
+                // Element is not visible - remove glitch-active class
+                entry.target.classList.remove("glitch-active");
+            }
+        });
+    }, { threshold: 0.1 });
+
+    // Observe header elements
+    if (titleEl) glitchObserver.observe(titleEl);
+    if (transEl) glitchObserver.observe(transEl);
+    
+    // Observe footer elements
+    if (footerEl) glitchObserver.observe(footerEl);
+    if (monoEl) glitchObserver.observe(monoEl);
+    if (transFooterEl) glitchObserver.observe(transFooterEl);
 }
 
 /* ==========================================
