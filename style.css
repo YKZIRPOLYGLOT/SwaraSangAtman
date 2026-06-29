@@ -202,13 +202,22 @@ body {
 .main-title {
     position: relative;
     font-family: var(--font-title);
-    font-size: 1.85rem;
+    
+    /* TURUNKAN font-size agar muat di layar */
+    font-size: 2rem; /* Anda bisa mencoba 1.8rem atau 1.5rem */
+    
+    /* KURANGI letter-spacing jika terlalu lebar */
+    letter-spacing: 2px; 
+    
     font-weight: 400;
-    letter-spacing: 4px;
     color: var(--gold);
     text-shadow: 0 0 15px var(--gold-glow);
     display: inline-block;
-    padding: 0 10px; 
+    padding: 0 10px;
+    
+    /* Mencegah teks pindah baris secara paksa */
+    white-space: nowrap; 
+    
     animation: master-glitch 4s infinite;
 }
 
