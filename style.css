@@ -176,6 +176,7 @@ body {
     padding: 6vh 4vw;
     justify-content: flex-start;
     align-items: flex-start;
+    flex-direction: column;
     
     display: none;
     opacity: 0;
@@ -188,6 +189,14 @@ body {
     display: flex;
     opacity: 1;
     transform: rotateX(0deg) scaleY(1);
+}
+
+.manuscript-stack {
+    width: min(100%, 650px);
+    margin: 0 auto 8vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .scroll-container::-webkit-scrollbar {
@@ -204,8 +213,7 @@ body {
 /* Panel Manuskrip Kuno Terintegrasi */
 .manuscript-panel {
     position: relative;
-    width: 100%;
-    max-width: 650px;
+    width: min(100%, 650px);
     background: var(--ancient-paper);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -214,9 +222,7 @@ body {
                 inset 0 0 60px rgba(0, 0, 0, 0.6),
                 0 0 30px var(--gold-dim);
     padding: 80px 60px;
-    margin-left: 4vw;
-    margin-top: 4vh;
-    margin-bottom: 8vh;
+    margin: 0;
     border-radius: 2px;
     transform: translate3d(var(--parallax-x), var(--parallax-y), 0);
     transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
@@ -260,22 +266,17 @@ body {
 .main-title {
     position: relative;
     font-family: var(--font-title);
-    
-    /* TURUNKAN font-size agar muat di layar */
-    font-size: 2rem; /* Anda bisa mencoba 1.8rem atau 1.5rem */
-    
-    /* KURANGI letter-spacing jika terlalu lebar */
-    letter-spacing: 1px; 
-    
+    font-size: clamp(1.25rem, 3.4vw, 2rem);
+    letter-spacing: 1px;
     font-weight: 400;
     color: var(--gold);
     text-shadow: 0 0 15px var(--gold-glow);
     display: inline-block;
     padding: 0 10px;
-    
-    /* Mencegah teks pindah baris secara paksa */
-    white-space: nowrap; 
-    
+    max-width: 100%;
+    line-height: 1.25;
+    white-space: normal;
+    overflow-wrap: anywhere;
     animation: none;
 }
 
@@ -322,15 +323,19 @@ body {
 .transliteration {
     position: relative;
     font-family: var(--font-title);
-    font-size: 1.4rem;
+    font-size: clamp(0.95rem, 2.8vw, 1.4rem);
     font-weight: 400;
-    letter-spacing: 8px;
+    letter-spacing: 4px;
     color: #7a0f0f;
     text-shadow: 0 0 12px rgba(122, 15, 15, 0.6);
     display: inline-block;
     margin-top: 15px;
     padding: 0 10px;
     text-transform: uppercase;
+    max-width: 100%;
+    line-height: 1.4;
+    white-space: normal;
+    overflow-wrap: anywhere;
     animation: none;
 }
 
@@ -480,6 +485,39 @@ body {
     gap: 10px;
 }
 
+.manuscript-actions {
+    width: auto;
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-manuscript-btn {
+    border: 1px solid rgba(212, 175, 55, 0.45);
+    background: rgba(212, 175, 55, 0.1);
+    color: rgba(212, 175, 55, 0.95);
+    font-family: var(--font-title);
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    cursor: pointer;
+    box-shadow: 0 0 12px var(--gold-glow);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+}
+
+.close-manuscript-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
 .sacred-monogram {
     font-family: var(--font-heading);
     font-size: 1.8rem;
@@ -520,25 +558,29 @@ body {
 /* --- Media Queries Responsif --- */
 @media (max-width: 768px) {
     .scroll-container {
-        justify-content: center;
-        align-items: flex-start;
-        padding: 4vh 4vw;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 2vh 4vw 4vh;
     }
     
+    .manuscript-stack {
+        margin-top: 0;
+        width: 100%;
+    }
+
     .manuscript-panel {
-        margin-left: 0;
-        margin-top: 2vh;
-        padding: 45px 30px;
+        padding: 35px 20px;
+        width: 100%;
     }
 
     .main-title {
-        font-size: 2.1rem;
-        letter-spacing: 4px;
+        font-size: clamp(1.35rem, 5.2vw, 2rem);
+        letter-spacing: 1px;
     }
 
     .transliteration {
-        font-size: 1.1rem;
-        letter-spacing: 5px;
+        font-size: clamp(0.9rem, 4vw, 1.1rem);
+        letter-spacing: 2px;
     }
 
     .line {

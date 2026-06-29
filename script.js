@@ -149,18 +149,31 @@ function initInteractions() {
    ========================================== */
 function initManuscriptOpener() {
     const openBtn = document.getElementById("openManuscriptBtn");
+    const closeBtn = document.getElementById("closeManuscriptBtn");
     const buttonContainer = document.querySelector(".open-button-container");
     const scrollContainer = document.getElementById("scrollContainer");
 
-    openBtn.addEventListener("click", () => {
-        // Sembunyikan tombol container
+    const openManuscript = () => {
         buttonContainer.classList.add("hidden");
-        
-        // Tunjukkan dan buka manuscript dengan animasi rolling
+
         setTimeout(() => {
             scrollContainer.classList.add("open");
+            scrollContainer.scrollTop = 0;
+            scrollContainer.scrollTo({ top: 0, behavior: "auto" });
+            if (closeBtn) closeBtn.classList.add("visible");
         }, 100);
-    });
+    };
+
+    const closeManuscript = () => {
+        scrollContainer.classList.remove("open");
+        scrollContainer.scrollTop = 0;
+        scrollContainer.scrollTo({ top: 0, behavior: "auto" });
+        if (closeBtn) closeBtn.classList.remove("visible");
+        buttonContainer.classList.remove("hidden");
+    };
+
+    openBtn.addEventListener("click", openManuscript);
+    if (closeBtn) closeBtn.addEventListener("click", closeManuscript);
 }
 
 /* ==========================================
