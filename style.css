@@ -207,7 +207,7 @@ body {
     font-size: 2rem; /* Anda bisa mencoba 1.8rem atau 1.5rem */
     
     /* KURANGI letter-spacing jika terlalu lebar */
-    letter-spacing: 2px; 
+    letter-spacing: 1px; 
     
     font-weight: 400;
     color: var(--gold);
