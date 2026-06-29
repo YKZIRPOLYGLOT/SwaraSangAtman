@@ -6,6 +6,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     initSacredParticles();
     initInteractions();
+    initManuscriptOpener();
     initScrollObserver();
     initGlitchVisibilityObserver();
     initMatrixGlitch();
@@ -141,6 +142,25 @@ function initInteractions() {
         requestAnimationFrame(renderParallax);
     }
     renderParallax();
+}
+
+/* ==========================================
+   2.5. MANUSCRIPT OPENER (Tombol Pembuka)
+   ========================================== */
+function initManuscriptOpener() {
+    const openBtn = document.getElementById("openManuscriptBtn");
+    const buttonContainer = document.querySelector(".open-button-container");
+    const scrollContainer = document.getElementById("scrollContainer");
+
+    openBtn.addEventListener("click", () => {
+        // Sembunyikan tombol container
+        buttonContainer.classList.add("hidden");
+        
+        // Tunjukkan dan buka manuscript dengan animasi rolling
+        setTimeout(() => {
+            scrollContainer.classList.add("open");
+        }, 100);
+    });
 }
 
 /* ==========================================

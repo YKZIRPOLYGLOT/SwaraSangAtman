@@ -118,6 +118,54 @@ body {
     mix-blend-mode: screen;
 }
 
+/* --- Button Untuk Membuka Manuskrip --- */
+.open-button-container {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    backdrop-filter: blur(2px);
+    background: rgba(13, 11, 9, 0.3);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.open-button-container.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.open-manuscript-btn {
+    position: relative;
+    padding: 20px 50px;
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    color: var(--warm-white);
+    background: rgba(212, 175, 55, 0.15);
+    border: 2px solid var(--gold);
+    border-radius: 0;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 0 20px var(--gold-glow), inset 0 0 20px rgba(212, 175, 55, 0.1);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    text-shadow: 0 0 10px var(--gold-glow);
+}
+
+.open-manuscript-btn:hover {
+    background: rgba(212, 175, 55, 0.25);
+    box-shadow: 0 0 40px var(--gold-glow), inset 0 0 30px rgba(212, 175, 55, 0.2);
+    transform: scale(1.05);
+}
+
+.open-manuscript-btn:active {
+    transform: scale(0.98);
+}
+
 /* --- Kontainer Utama & Struktur Panel --- */
 .scroll-container {
     position: absolute;
@@ -130,6 +178,18 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    
+    opacity: 0;
+    visibility: hidden;
+    transform: rotateX(90deg) scaleY(0);
+    transform-origin: top center;
+    transition: opacity 1.2s ease 0.4s, visibility 1.2s ease 0.4s, transform 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.4s;
+}
+
+.scroll-container.open {
+    opacity: 1;
+    visibility: visible;
+    transform: rotateX(0deg) scaleY(1);
 }
 
 .scroll-container::-webkit-scrollbar {
