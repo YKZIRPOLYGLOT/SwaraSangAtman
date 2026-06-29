@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
     initInteractions();
     initManuscriptOpener();
     initScrollObserver();
-    initGlitchVisibilityObserver();
     initMatrixGlitch();
+    initGlitchVisibilityObserver();
 });
 
 /* ==========================================
@@ -201,23 +201,52 @@ function initGlitchVisibilityObserver() {
     const monoEl = document.querySelector(".sacred-monogram");
     const transFooterEl = document.querySelector(".tranliteration2");
 
+    function resetVisibleText(el) {
+        if (!el) return;
+        el.classList.remove("glitch-active");
+        const fallbackText = el.getAttribute("data-text") || el.textContent || "";
+        el.innerHTML = fallbackText;
+        el.setAttribute("data-text", fallbackText);
+    }
+
+    function startVisibleGlitch(el, scrambler, finalText) {
+        if (!el || !scrambler) return;
+        el.classList.remove("glitch-active");
+
+        requestAnimationFrame(() => {
+            el.classList.add("glitch-active");
+            scrambler.scramble(finalText);
+        });
+    }
+
     const glitchObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
+            const target = entry.target;
+
             if (entry.isIntersecting) {
-                // Element is visible - add glitch-active class
-                entry.target.classList.add("glitch-active");
+                if (target === titleEl) {
+                    startVisibleGlitch(titleEl, window.titleScrambler, titleEl.getAttribute("data-text") || "ꦱ꧀ꦮꦫꦯꦁꦄꦠ꧀ꦩꦤ꧀ꦮꦶꦰꦸꦣ");
+                }
+
+                if (target === transEl) {
+                    startVisibleGlitch(transEl, window.transScrambler, transEl.getAttribute("data-text") || "SWARA SANG ATMAN");
+                }
+
+                if (target === footerEl) {
+                    target.classList.add("glitch-active");
+                }
             } else {
-                // Element is not visible - remove glitch-active class
-                entry.target.classList.remove("glitch-active");
+                if (target === titleEl || target === transEl) {
+                    resetVisibleText(target);
+                } else {
+                    target.classList.remove("glitch-active");
+                }
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.2 });
 
-    // Observe header elements
     if (titleEl) glitchObserver.observe(titleEl);
     if (transEl) glitchObserver.observe(transEl);
-    
-    // Observe footer elements
     if (footerEl) glitchObserver.observe(footerEl);
     if (monoEl) glitchObserver.observe(monoEl);
     if (transFooterEl) glitchObserver.observe(transFooterEl);
@@ -229,34 +258,32 @@ function initGlitchVisibilityObserver() {
 function initMatrixGlitch() {
     const titleEl = document.querySelector(".main-title");
     const transEl = document.querySelector(".transliteration");
-    
-    // Tambahan target untuk animasi footer
+
     const footerMono = document.querySelector(".sacred-monogram");
     const footerTrans = document.querySelector(".tranliteration2");
-    
+
     const javaneseChars = "ꦲꦤꦕꦫꦏꦢꦠꦱꦮꦬꦥꦿꦨꦩꦒꦧꦛꦯꦤ꧀ꦮꦶꦰꦸꦣ";
     const latinChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!<>-_\\/[]{}—=+*^?";
 
     if (titleEl) {
-        const scramblerMain = new MatrixScramble(titleEl, javaneseChars);
-        scramblerMain.scramble("ꦱ꧀ꦮꦫꦯꦁꦄꦠ꧀ꦩꦤ꧀ꦮꦶꦰꦸꦣ");
+        window.titleScrambler = window.titleScrambler || new MatrixScramble(titleEl, javaneseChars);
+        window.titleScrambler.scramble("ꦱ꧀ꦮꦫꦯꦁꦄꦠ꧀ꦩꦤ꧀ꦮꦶꦰꦸꦣ");
     }
 
     if (transEl) {
-        const scramblerTrans = new MatrixScramble(transEl, latinChars);
+        window.transScrambler = window.transScrambler || new MatrixScramble(transEl, latinChars);
         setTimeout(() => {
-            scramblerTrans.scramble("SWARA SANG ATMAN");
+            window.transScrambler.scramble("SWARA SANG ATMAN");
         }, 800);
     }
-    
+
     if (footerMono) {
         const scramblerFooterMono = new MatrixScramble(footerMono, javaneseChars);
-        // Delay agar teracak saat halaman pertama kali load, memberikan kesan hidup
         setTimeout(() => {
             scramblerFooterMono.scramble("ꦦꦬꦩꦓꦸꦫꦸꦄꦗ꧀ꦤꦟꦓꦩ");
         }, 1500);
     }
-    
+
     if (footerTrans) {
         const scramblerFooterTrans = new MatrixScramble(footerTrans, latinChars);
         setTimeout(() => {
