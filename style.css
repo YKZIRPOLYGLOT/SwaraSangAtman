@@ -275,7 +275,7 @@ body {
     left: -2px;
     text-shadow: 2px 0 #3a0303, -2px 2px 4px rgba(58, 3, 3, 0.8);
     clip-path: inset(70% 0 15% 0);
-    animation: glitch-bottom 2.8s infinite linear alternate-reverse;
+    animation: glitch-bottom 6.8s infinite linear alternate-reverse;
 }
 
 .matrix-glyph {
@@ -399,7 +399,7 @@ body {
     font-family: var(--font-title);
     font-size: 1rem;
     letter-spacing: 5px;
-    color: #7a0f0f;
+    color: #c20000;
     text-shadow: 0 0 8px rgba(122, 15, 15, 0.6);
     text-transform: uppercase;
     animation: breathingBlood 3s ease-in-out infinite alternate;
