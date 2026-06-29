@@ -143,30 +143,31 @@ function initInteractions() {
 }
 
 /* ==========================================
-   3. INTERSECTION OBSERVER (REVEAL ANIMATION)
+   3. INTERSECTION OBSERVER (REVEAL & TRIGGER GLITCH)
    ========================================== */
 function initScrollObserver() {
-    const stanzas = document.querySelectorAll("[data-observe]");
-
-    const observerOptions = {
-        root: null, // Memicu secara akurat di seluruh browser
-        rootMargin: "0px 0px -12% 0px",
-        threshold: 0.15
-    };
+    const elementsToReveal = document.querySelectorAll("[data-observe], .manuscript-footer");
+    const javaneseChars = "ꦲꦤꦕꦫꦏꦢꦠꦱꦮꦬꦥꦿꦨꦩꦒꦧꦛꦯꦤ꧀ꦮꦶꦰꦸꦣ";
+    const latinChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!<>-_\\/[]{}—=+*^?";
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("reveal-active");
-            } else {
-                entry.target.classList.remove("reveal-active");
+
+                // Memicu glitch jika elemen tersebut adalah footer
+                if (entry.target.classList.contains("manuscript-footer")) {
+                    const mono = entry.target.querySelector(".sacred-monogram");
+                    const trans = entry.target.querySelector(".tranliteration2");
+                    
+                    if (mono) new MatrixScramble(mono, javaneseChars).scramble("ꦦꦬꦩꦓꦸꦫꦸꦄꦗ꧀ꦤꦟꦓꦩ");
+                    if (trans) new MatrixScramble(trans, latinChars).scramble("PARAMAGURU AJNANAGAMA");
+                }
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.2 });
 
-    stanzas.forEach((stanza) => {
-        observer.observe(stanza);
-    });
+    elementsToReveal.forEach((el) => observer.observe(el));
 }
 
 /* ==========================================
