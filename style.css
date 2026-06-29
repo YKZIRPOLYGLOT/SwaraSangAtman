@@ -396,13 +396,18 @@ body {
 }
 
 .tranliteration2 {
+    position: relative;
     font-family: var(--font-title);
-    font-size: 1rem;
-    letter-spacing: 5px;
-    color: #c20000;
-    text-shadow: 0 0 8px rgba(122, 15, 15, 0.6);
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 8px;
+    color: #7a0f0f;
+    text-shadow: 0 0 12px rgba(122, 15, 15, 0.6);
+    display: inline-block;
+    margin-top: 15px;
+    padding: 0 10px;
     text-transform: uppercase;
-    animation: breathingBlood 3s ease-in-out infinite alternate;
+    animation: master-glitch 4.5s infinite;
 }
 
 @keyframes breathingGlow {
