@@ -175,20 +175,19 @@ body {
     scroll-behavior: smooth;
     z-index: 4;
     padding: 6vh 4vw;
-    display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     
+    display: none;
     opacity: 0;
-    visibility: hidden;
     transform: rotateX(90deg) scaleY(0);
     transform-origin: top center;
-    transition: opacity 1.2s ease 0.4s, visibility 1.2s ease 0.4s, transform 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.4s;
+    transition: opacity 1.2s ease 0.4s, transform 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.4s;
 }
 
 .scroll-container.open {
+    display: flex;
     opacity: 1;
-    visibility: visible;
     transform: rotateX(0deg) scaleY(1);
 }
 
