@@ -251,7 +251,7 @@ body {
     margin-top: 15px;
     padding: 0 10px;
     text-transform: uppercase;
-    animation: master-glitch 4.5s infinite;
+    animation: master-glitch 10.5s infinite;
 }
 
 .transliteration::before,
