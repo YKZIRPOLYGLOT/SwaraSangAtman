@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swara Sang Atman</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Marcellus&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="ambient-overlay"></div>
+    <div class="mist-layer"></div>
+    <div class="spotlight" id="spotlight"></div>
+
+    <div class="magic-circle-container">
+        <svg class="magic-circle" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="95" stroke="url(#goldGradient)" stroke-width="0.5" fill="none" stroke-dasharray="4,4" />
+            <circle cx="100" cy="100" r="85" stroke="url(#goldGradient)" stroke-width="0.2" fill="none" />
+            <circle cx="100" cy="100" r="75" stroke="url(#goldGradient)" stroke-width="0.8" fill="none" stroke-dasharray="20,10,5,10" />
+            <path d="M 100,5 L 100,195 M 5,100 L 195,100 M 33,33 L 167,167 M 33,167 L 167,33" stroke="url(#goldGradient)" stroke-width="0.1" fill="none" />
+            <defs>
+                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(212,175,55,0.1)" />
+                    <stop offset="50%" stop-color="rgba(212,175,55,0.4)" />
+                    <stop offset="100%" stop-color="rgba(212,175,55,0.1)" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
+    <canvas id="particleCanvas"></canvas>
+
+    <div class="scroll-container" id="scrollContainer">
+        <main class="manuscript-panel">
+
+            <div class="corner-ornament top-left">
+                <svg viewBox="0 0 100 100"><path d="M0,0 L100,0 L100,4 L4,4 L4,100 L0,100 Z M12,12 L80,12 L80,14 L14,14 L14,80 L12,80 Z" fill="rgba(212,175,55,0.4)" /></svg>
+            </div>
+            <div class="corner-ornament top-right">
+                <svg viewBox="0 0 100 100"><path d="M100,0 L0,0 L0,4 L96,4 L96,100 L100,100 Z M88,12 L20,12 L20,14 L86,14 L86,80 L88,80 Z" fill="rgba(212,175,55,0.4)" /></svg>
+            </div>
+            <div class="corner-ornament bottom-left">
+                <svg viewBox="0 0 100 100"><path d="M0,100 L100,100 L100,96 L4,96 L4,0 L0,0 Z M12,88 L80,88 L80,86 L14,86 L14,20 L12,20 Z" fill="rgba(212,175,55,0.4)" /></svg>
+            </div>
+            <div class="corner-ornament bottom-right">
+                <svg viewBox="0 0 100 100"><path d="M100,100 L0,100 L0,96 L96,96 L96,0 L100,0 Z M88,88 L20,88 L20,86 L86,86 L86,20 L88,20 Z" fill="rgba(212,175,55,0.4)" /></svg>
+            </div>
+
+            <header class="manuscript-header">
+                <h1 class="main-title" data-reveal data-text="ꦱ꧀ꦮꦫꦯꦁꦄꦠ꧀ꦩꦤ꧀ꦮꦶꦰꦸꦣ">ꦱ꧀ꦮꦫꦯꦁꦄꦠ꧀ꦩꦤ꧀ꦮꦶꦰꦸꦣ</h1>
+                <h2 class="transliteration" data-reveal data-text="Swara Sang Atman">Swara Sang Atman</h2>
+                <div class="divider-line"></div>
+            </header>
+
+            <article class="poem-body">
+                <div class="stanza" data-observe>
+                    <p class="line">Aku bukan penjaja mantra dan bara,</p>
+                    <p class="line">hanya pembisik arah sebelum kau berdarah.</p>
+                </div>
+
+                <div class="stanza" data-observe>
+                    <p class="line">Dan Aku bukan dukun penabur garam dan dupa,</p>
+                    <p class="line">melainkan penyangga langkahmu sebelum dunia memberi luka.</p>
+                </div>
+
+                <div class="stanza" data-observe>
+                    <p class="line">Aku bukan tokoh agama yang mengajarkan doa,</p>
+                    <p class="line">Aku hanya mengajarkan cara tetap berdiri saat doa tidak menjelma.</p>
+                </div>
+
+                <div class="stanza" data-observe>
+                    <p class="line">Aku tak mengajarimu cara memohon kepada langit,</p>
+                    <p class="line">Aku hanya mengajarimu agar tak menyerah pada bumi.</p>
+                </div>
+
+                <div class="stanza" data-observe>
+                    <p class="line">Maka biarkanlah mereka mengajarkan cara menengadah;</p>
+                    <p class="line">sedangkan Aku akan mengajarimu cara tetap melangkah.</p>
+                </div>
+
+                <div class="stanza" data-observe>
+                    <p class="line">Aku tidak mencari makna</p>
+                    <p class="line">Karena Aku adalah rasa</p>
+                </div>
+
+                <div class="stanza" data-observe>
+                    <p class="line">dan Aku tidak membutuhkan mantra</p>
+                    <p class="line">karena Aku adalah sabda</p>
+                </div>
+
+                <div class="stanza" data-observe>
+                    <p class="line">Aku tidak menginginkan surga</p>
+                    <p class="line">karena Aku adalah nirwana</p>
+                </div>
+
+                <div class="stanza" data-observe>
+                    <p class="line">Aku tidak memerlukan tinta untuk menuliskan aksara,</p>
+                    <p class="line">sebagaimana Aku tak memerlukan kata untuk menyampaikan makna.</p>
+                </div>
+
+                <div class="stanza" data-observe>
+                    <p class="line">dan Aku adalah Aku, yang bersemayam di dalam diriku</p>
+                    <p class="line">sebelum nama menamaiku, dan sebelum panggilan memanggilku.</p>
+                </div>
+
+                <div class="stanza" data-observe>
+                    <p class="line">Aku tidak terikat oleh sunnah, syariah, ataupun dharma;</p>
+                    <p class="line">sebab segala jalan telah bermuara pada Diri sang Wisuda.</p>
+                </div>
+            </article>
+
+            <footer class="manuscript-footer">
+                <div class="sacred-monogram">ꦦꦬꦩꦓꦸꦫꦸꦄꦗ꧀ꦤꦟꦓꦩ</div>
+                <div class="tranliteration2">Paramaguru Ajnanagama</div>
+            </footer>
+        </main>
+    </div>
+
+    <svg style="display: none;">
+        <filter id="parchmentGrain">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.07 0" />
+            <feComposite operator="in" in2="SourceGraphic" />
+        </filter>
+    </svg>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
